@@ -4,7 +4,24 @@
    to upgrade your kitchen, cookware, product, and even your kitchen. There are also unlockable outfits and the like that
    I will not be implementing in this terminal edition. */
 
-function boot() {
+
+
+function welcome() {
     console.log('Welcome to Terminal Cook!');
     console.log('[ N ] New Game | [ L ] Load Saved Game | [ H ] Help');
+};
+
+const input = process.argv[2].toString().toLowerCase(); 
+
+function initializeGame(input) {
+    // New game
+    if (input === 'N') {
+        // Create csv file with saveName in game directory
+        console.log('Confirm new game?');
+        console.log('[ Y ] / [ N ]');
+    } else {
+        if (input === 'L') {
+            
+        };
+    };
 };
