@@ -41,6 +41,9 @@ function initializeGame(input) {
 */
 
 // Version 2
+
+/* Use if / else with for input validation */
+
 interface.question('Welcome to Terminal Cook!\n [ N ]New Game\n [ L ] Load Saved Game\n [ H ] Help\nMe: ', (input) => {
     const hotkey = input.toLowerCase();
     if (hotkey === hotkeys[0]) {
@@ -58,3 +61,23 @@ interface.question('Welcome to Terminal Cook!\n [ N ]New Game\n [ L ] Load Saved
     }; 
 });
 
+// Version 3
+
+/* Use switch for input validation */
+
+interface.question('Welcome to Terminal Cook!\n [ N ]New Game\n [ L ] Load Saved Game\n [ H ] Help\nMe: ', (input) => {
+    switch (input) {
+        case 'n':
+            console.log('New Game!');
+            break;
+        case 'l':
+            console.log('Choose Save File');
+            break;
+        case 'h':
+            console.log('Help');
+            break;
+        default:
+            console.log('Invalid input, please try again.')
+
+    };
+});
