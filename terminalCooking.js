@@ -5,12 +5,15 @@
    I will not be implementing in this terminal edition. */
 
 const fs = require('fs'),
-    readline = require('readLine'),
+    readline = require('readline'),
     interface = readline.createInterface({
         input: process.stdin,
         output: process.stdout
     });
 
+// Version 1
+
+/*
 const hotkeys = [
     // New Game [0]
     'n',
@@ -20,7 +23,6 @@ const hotkeys = [
     'h'
     ];
 
-/* Version 1
 function welcome() {
     console.log('Welcome to Terminal Cook!');
     console.log('[ N ] New Game | [ L ] Load Saved Game | [ H ] Help');
@@ -44,6 +46,7 @@ function initializeGame(input) {
 
 /* Use if / else with for input validation */
 
+/* 
 interface.question('Welcome to Terminal Cook!\n [ N ]New Game\n [ L ] Load Saved Game\n [ H ] Help\nMe: ', (input) => {
     const hotkey = input.toLowerCase();
     if (hotkey === hotkeys[0]) {
@@ -60,11 +63,13 @@ interface.question('Welcome to Terminal Cook!\n [ N ]New Game\n [ L ] Load Saved
         };
     }; 
 });
+*/
 
 // Version 3
 
 /* Use switch for input validation */
 
+/*
 interface.question('Welcome to Terminal Cook!\n [ N ]New Game\n [ L ] Load Saved Game\n [ H ] Help\nMe: ', (input) => {
     switch (input) {
         case 'n':
@@ -77,7 +82,33 @@ interface.question('Welcome to Terminal Cook!\n [ N ]New Game\n [ L ] Load Saved
             console.log('Help');
             break;
         default:
-            console.log('Invalid input, please try again.')
+            console.log('Invalid input, please try again.');
 
     };
+});
+*/
+
+// Version 4
+
+
+function mainMenu(input) {
+    switch (input) {
+        case 'n':
+            console.log('New Game!');
+            break;
+        case 'l':
+            console.log('Choose Save File');
+            break;
+        case 'h':
+            console.log('Help');
+            break;
+        default:
+            console.log('Invalid input, please try again.');
+            mainMenu();
+    };
+};
+
+interface.question('Welcome to Terminal Cook!\n [ N ]New Game\n [ L ] Load Saved Game\n [ H ] Help\nMe: ', (input) => {
+    const hotkey = input.toString();
+    mainMenu(input);
 });
