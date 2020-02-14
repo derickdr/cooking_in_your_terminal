@@ -90,25 +90,54 @@ interface.question('Welcome to Terminal Cook!\n [ N ]New Game\n [ L ] Load Saved
 
 // Version 4
 
-
 function mainMenu(input) {
-    switch (input) {
+    const hotkey = input.toString().toLowerCase();
+    switch (hotkey) {
+        // New game path
         case 'n':
             console.log('New Game!');
+            newGame();
             break;
+        // Load save path
         case 'l':
             console.log('Choose Save File');
             break;
+        // Return help path
         case 'h':
             console.log('Help');
             break;
+        // Exception
         default:
-            console.log('Invalid input, please try again.');
-            mainMenu();
+            invalidInput();
     };
 };
 
-interface.question('Welcome to Terminal Cook!\n [ N ]New Game\n [ L ] Load Saved Game\n [ H ] Help\nMe: ', (input) => {
-    const hotkey = input.toString();
-    mainMenu(input);
+function newGame(hotkey) {
+    interface.question('Create New Game?\n [ Y ] Yes\n [ N ] No\nMe: ', (input) => {
+        const hotkey = input.toString().toLowerCase();
+        switch (hotkey) {
+            // Confirm save create
+            case 'y':
+                console.log('New game created!');
+                break;
+            // Cancel save create
+            case 'n':
+                console.log('Returning to Main Menu.\nWelcome to Terminal Cook!\n [ N ] New Game\n [ L ] Load Saved Game\n [ H ] Help\nMe: ');
+                // mainMenu();
+                break;
+            // Exception
+            default:
+                invalidInput();
+        };
+    });
+};
+
+// Exception function
+function invalidInput() {
+    console.log('Invalid input, try again.');
+};
+
+interface.question('Welcome to Terminal Cook!\n [ N ] New Game\n [ L ] Load Saved Game\n [ H ] Help\nMe: ', (input) => {
+    const hotkey = input.toString().toLowerCase();
+    mainMenu(hotkey);
 });
